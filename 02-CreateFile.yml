@@ -1,7 +1,10 @@
 #write a playbook to create a file in all host nodes
-- hosts: all
+---
+- name: Create a file
+  hosts: all
   tasks:
-    - name: Create file in all host nodes
-      file: 
-        path: /home/ansible/hello.txt
+    - name: Create file
+      become: true
+      file:
+        path: /path/to/file.txt
         state: touch
