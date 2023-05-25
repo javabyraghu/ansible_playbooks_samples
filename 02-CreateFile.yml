@@ -20,7 +20,7 @@
     - name: Copy file to another location
       copy:
         src: /home/ansible/message.txt
-        dest: /home/ansible/destination/message.txt
+        dest: /home/ansible/new_message.txt
 
     - name: Append data to file
       lineinfile:
