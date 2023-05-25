@@ -1,10 +1,37 @@
-#write a playbook to create a file in all host nodes
+#write a playbook to create, write, append, rename a file in all host nodes
 ---
-- name: Create a file
+---
+- name: File Operations
   hosts: all
+  gather_facts: no
+
   tasks:
-    - name: Create file
-      become: true
+    - name: Create a file
       file:
-        path: /home/ansible/file.txt
+        path: /home/ansible/message.txt
         state: touch
+
+    - name: Write data to file
+      blockinfile:
+        path: /home/ansible/message.txt
+        block: |
+          This is MESSAGE from Raghu.
+
+    - name: Copy file to another location
+      copy:
+        src: /home/ansible/message.txt
+        dest: /home/ansible/destination/message.txt
+
+    - name: Append data to file
+      lineinfile:
+        path: /home/ansible/message.txt
+        line: |
+          This is additional Message from RAGHU.
+
+    - name: Rename an existing file
+      command: mv /home/ansible/message.txt /home/ansible/newmessage.txt
+
+    - name: Delete file
+      file:
+        path: /home/ansible/newmessage.txt
+        state: absent
