@@ -1,6 +1,5 @@
 #write a playbook to create, write, append, rename a file in all host nodes
 ---
----
 - name: File Operations
   hosts: all
   gather_facts: no
