@@ -6,5 +6,5 @@
     - name: Create file
       become: true
       file:
-        path: /path/to/file.txt
+        path: /home/ansible/file.txt
         state: touch
