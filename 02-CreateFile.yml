@@ -1,4 +1,3 @@
-#write a playbook to create, write, append, rename a file in all host nodes
 ---
 - name: File Operations
   hosts: all
@@ -16,10 +15,10 @@
         block: |
           This is MESSAGE from Raghu.
 
-    - name: Copy file to another location
+    - name: Copy file to Host location
       copy:
-        src: /home/ansible/message.txt
-        dest: /home/ansible/new_message.txt
+        src: /home/ansible/cp_message.txt
+        dest: /home/ansible/cp_message.txt
 
     - name: Append data to file
       lineinfile:
